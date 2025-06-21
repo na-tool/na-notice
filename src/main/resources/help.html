@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x6d88;&#x606f;&#x901a;&#x77e5;&#x6a21;&#x5757;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h3 id="消息通知模块">消息通知模块</h3>
+<pre><code class="language-text">本版本发布时间为 2021-05-01  适配jdk版本为 1.8
+</code></pre>
+<h4 id="1-配置">1 配置</h4>
+<h5 id="11-添加依赖">1.1 添加依赖</h5>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.na&lt;/groupId&gt;
+    &lt;artifactId&gt;na-notice&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+        
+或者
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.na&lt;/groupId&gt;
+    &lt;artifactId&gt;na-notice&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;${project.basedir}/../lib/na-notice-1.0.0.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;
+
+相关依赖
+&lt;!--	邮箱依赖 	--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-mail&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h5 id="12-配置">1.2 配置</h5>
+<pre><code class="language-yaml"><span class="hljs-attr">na:</span>
+  <span class="hljs-attr">email:</span>
+    <span class="hljs-attr">userName:</span> <span class="hljs-string">xxxx@163.com</span>
+    <span class="hljs-attr">passWord:</span> <span class="hljs-string">xxxx</span>
+<span class="hljs-comment">#    host: smtp.qq.com</span>
+<span class="hljs-comment">#    port: 465</span>
+<span class="hljs-comment">#    userName: xxxx@qq.com</span>
+<span class="hljs-comment">#    passWord: xxx</span>
+</code></pre>
+<h5 id="13-使用">1.3 使用</h5>
+<pre><code class="language-java"><span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> ISendEmailExeService sendEmailExeService;
+<span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> AutoEmailConfig autoEmailConfig;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendEmail</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> MalformedURLException, MessagingException, GeneralSecurityException, UnsupportedEncodingException {
+    <span class="hljs-type">SendEmailParams</span> <span class="hljs-variable">params</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SendEmailParams</span>();
+    List&lt;String&gt; cc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+    cc.add(<span class="hljs-string">&quot;shoujian@163.com&quot;</span>);
+    params.setToUser(cc);
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;文本测试&quot;</span> +<span class="hljs-string">&quot;imageHtmlTag&quot;</span> +<span class="hljs-string">&quot;====&quot;</span> + <span class="hljs-string">&quot;bbbb&quot;</span> + <span class="hljs-string">&quot;b1b1&quot;</span>
+            + <span class="hljs-string">&quot;&lt;img src=&#x27;https://111/222/33/1.png&#x27;&gt;&quot;</span>;
+
+    <span class="hljs-comment">// 图片以URL形式,放在正文中, 注意上文的 bbbb,b1b1要和下面的key值一致</span>
+    Map&lt;String,String&gt; mapUrl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+    mapUrl.put(<span class="hljs-string">&quot;bbbb&quot;</span>,<span class="hljs-string">&quot;https://111/222/33/1.png&quot;</span>);
+    mapUrl.put(<span class="hljs-string">&quot;b1b1&quot;</span>,<span class="hljs-string">&quot;https://111/222/33/1.png&quot;</span>);
+
+    Map&lt;String, Object&gt; urlToMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageMailDto</span>().getImageMailDtoByUrlToMap(content, mapUrl);
+
+    content = urlToMap.get(EmailConst.EMAIL_CONTENT).toString();
+    <span class="hljs-comment">/**
+     * 正文图片
+     */</span>
+    List&lt;ImageMailDto&gt; imageMailDtoDates = (List&lt;ImageMailDto&gt;) urlToMap.get(EmailConst.EMAIL_IMAGES);
+
+    params.setContent(content);
+    params.setImageMail(imageMailDtoDates);
+
+    <span class="hljs-comment">/**
+     * 附件
+     */</span>
+    <span class="hljs-type">AttachmentMailDto</span> <span class="hljs-variable">attachmentMailDto</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AttachmentMailDto</span>();
+    List&lt;String&gt; path = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+    path.add(<span class="hljs-string">&quot;D:\\111\\22222.txt&quot;</span>);
+    attachmentMailDto.setAttachPath(path);
+    List&lt;String&gt; url = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+    url.add(<span class="hljs-string">&quot;https://111/222/33/1.png&quot;</span>);
+<span class="hljs-comment">//        url.add(&quot;https://111/222/33/1.png&quot;);</span>
+    attachmentMailDto.setAttachUrl(url);
+
+    params.setAttContent(attachmentMailDto);
+
+    <span class="hljs-type">Boolean</span> <span class="hljs-variable">send</span> <span class="hljs-operator">=</span> sendEmailExeService.send(params, <span class="hljs-literal">null</span>);
+
+}
+</code></pre>
+<h1 id="注意启动类配置">【注意】启动类配置</h1>
+<pre><code>如果你的包名不是以com.na开头的，需要配置
+@ComponentScan(basePackages = {&quot;com.na&quot;, &quot;com.ziji.baoming&quot;}) // 扫描多个包路径
+</code></pre>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
