@@ -6,7 +6,7 @@
     <artifactId>na-notice</artifactId>
     <groupId>io.github.na-tool</groupId>
     <name>${project.artifactId}</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <description>通知模块</description>
 
